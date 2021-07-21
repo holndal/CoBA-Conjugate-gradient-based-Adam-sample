@@ -31,7 +31,7 @@ testloader = torch.utils.data.DataLoader(testset,
                                             shuffle=False, 
                                             num_workers=2)
 
-classes = tuple(np.linspace(0, 9, 10, dtype=np.uint8))
+
 
 def acc(net):
   correct = 0

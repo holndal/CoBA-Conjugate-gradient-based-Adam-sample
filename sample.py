@@ -8,6 +8,9 @@ import matplotlib.pyplot as plt
 import torch.optim as optim
 from network import Net
 from coba import CoBA
+torch.backends.cudnn.benchmark = True
+
+BATCH_SIZE=512
 
 transform = transforms.Compose(
     [transforms.ToTensor(),
@@ -17,7 +20,7 @@ trainset = torchvision.datasets.MNIST(root='./data',
                                         download=True,
                                         transform=transform)
 trainloader = torch.utils.data.DataLoader(trainset,
-                                            batch_size=600,
+                                            batch_size=BATCH_SIZE,
                                             shuffle=True,
                                             num_workers=2)
 
@@ -26,7 +29,7 @@ testset = torchvision.datasets.MNIST(root='./data',
                                         download=True, 
                                         transform=transform)
 testloader = torch.utils.data.DataLoader(testset, 
-                                            batch_size=600,
+                                            batch_size=BATCH_SIZE,
                                             shuffle=False, 
                                             num_workers=2)
 
@@ -68,9 +71,8 @@ def run(epochs,op):
   for epoch in range(epochs):
     
       running_loss = 0.0
-      
+      net.train()
       for i, (inputs, labels) in enumerate(trainloader, 0):
-          net.train()
           inputs=inputs.cuda()
           labels=labels.cuda()
           # zero the parameter gradients

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import torch
+import torc
 import torchvision
 import torchvision.transforms as transforms
 import numpy as np
@@ -37,7 +37,7 @@ def acc(net):
   correct = 0
   total = 0
   loss = 0
-  criterion = nn.CrossEntropyLoss()
+  criterion = torch.nn.CrossEntropyLoss()
   with torch.no_grad():
       for (images, labels) in testloader:
           images=images.cuda()
@@ -51,7 +51,7 @@ def acc(net):
 
 def run(epochs,op):
   net=Net().cuda()
-  criterion = nn.CrossEntropyLoss()
+  criterion = torch.nn.CrossEntropyLoss()
   if op=="CoBA FR":
     optimizer=CoBA(net.parameters(), lr=0.001, betas=(0.9,0.999),amsgrad=True, gammatype="FR")
   elif op=="CoBA PRP":

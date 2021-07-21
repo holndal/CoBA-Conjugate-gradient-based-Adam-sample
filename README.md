@@ -3,8 +3,12 @@
 # CAUTION
 holndalstarted learning pytorch this month. there must be some errors.
 
-CoBA's paper is here.
+# PAPER
 https://arxiv.org/pdf/2003.00231.pdf
+
+# BASE code
+this code is based on pytorch's adam.py 
+https://github.com/pytorch/pytorch/blob/master/torch/optim/adam.py
 
 # required
 pytorch

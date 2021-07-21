@@ -62,8 +62,6 @@ def run(epochs,op):
     optimizer=torch.optim.Adam(net.parameters(), lr=0.001, betas=(0.9,0.999),amsgrad=True)
   results=[]
   for epoch in range(epochs):
-    
-      running_loss = 0.0
       net.train()
       for i, (inputs, labels) in enumerate(trainloader, 0):
           inputs=inputs.cuda()
@@ -77,12 +75,9 @@ def run(epochs,op):
           loss.backward()
           optimizer.step()
 
-
-          # print statistics
-          running_loss += loss.item()
       net.eval()
       temp=acc(net)
-      print("EPOCH {:02} / {} loss:{} acc:{}".format(epoch,epochs,loss.item(),temp))
+      print("EPOCH {:02} / {:02} val acc:{}% loss(train):{} loss(val):{}".format(epoch,epochs,temp[0],loss.item(), temp[1]))
       results.append(temp)
   print('Finished Training')
 

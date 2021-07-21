@@ -3,8 +3,6 @@ import torch
 import torchvision
 import torchvision.transforms as transforms
 import numpy as np
-import numpy as np
-import matplotlib.pyplot as plt
 import torch.optim as optim
 from network import Net
 from coba import CoBA
@@ -50,11 +48,6 @@ def acc(net):
           correct += (predicted == labels).sum().item()
           loss += criterion(outputs, labels) / len(testloader)
   return correct/total ,loss.item()
-
-from torch.optim.optimizer import Optimizer
-from typing import List, Optional
-from torch import Tensor
-import torch
 
 def run(epochs,op):
   net=Net().cuda()

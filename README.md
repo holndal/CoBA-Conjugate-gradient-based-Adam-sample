@@ -1,7 +1,7 @@
 # CoBA (Conjugate gradient based Adam) PyTorch sample
 
 # CAUTION
-holndalstarted learning pytorch this month. there must be some errors.
+This implementation must be incorrect.
 
 # PAPER
 https://arxiv.org/pdf/2003.00231.pdf
